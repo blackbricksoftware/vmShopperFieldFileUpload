@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="vmuserfield" method="upgrade">
+	<name>VM Shopper Field File Upload</name>
+	<creationDate>August 2012</creationDate>
+	<copyright>Black Brick Software LLC</copyright>
+	<license>GNU General Public License version 2 or later</license>
+	<author>Black Brick Software LLC</author>
+	<authorEmail>david@blackbricksoftware.com</authorEmail>
+	<authorUrl>https://blackbricksoftware.com</authorUrl>
+	<version>1.0.0</version>
+	<description>This plugin adds the ability to have a "file" shopper field type. Make sure that the 'File Upload Location' is writable. If files are sensitive, ensure the folder location is not web accessable.</description>
+	<files>
+		<filename plugin="vmShopperFieldFileUpload">vmShopperFieldFileUpload.php</filename>
+		<filename>install.vmShopperFieldFileUpload.sql</filename>
+		<filename>uninstall.vmShopperFieldFileUpload.sql</filename>
+		<filename>index.html</filename>
+		<filename>LICENSE.GPL</filename>
+		<folder>uploads</folder>
+		<folder>language</folder>
+	</files>
+	<install>
+		<sql>
+			<file charset="utf8" driver="mysql">install.vmShopperFieldFileUpload.sql</file>
+		</sql>
+	</install>
+    <uninstall>
+		<sql>
+			<file charset="utf8" driver="mysql">uninstall.vmShopperFieldFileUpload.sql</file>
+		</sql>
+	</uninstall>
+	<languages folder="language/en-GB">
+		<language tag="en-GB">en-GB.plg_vmuserfield_vmShopperFieldFileUpload.ini</language>
+		<language tag="en-GB">en-GB.plg_vmuserfield_vmShopperFieldFileUpload.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="uploadlocation" type="text" default="plugins/vmuserfield/vmShopperFieldFileUpload/uploads/" description="PLG_VM_FILE_UPLOAD_LOCATION" label="PLG_VM_FILE_UPLOAD_LOCATION_LABEL" />
+				<field name="allowedtypes" type="text" default="pdf,png,gif,jpg,jpeg,bmp,wbmp,doc,docx,odt,rtf" description="PLG_VM_FILE_ALLOWED_TYPES" label="PLG_VM_FILE_ALLOWED_TYPES_LABEL" />
+				<field name="shownote" type="list" default="1" description="PLG_VM_FILE_SHOW_NOTE" label="PLG_VM_FILE_SHOW_NOTE_LABEL">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="showuploaded" type="list" default="1" description="PLG_VM_FILE_SHOW_UPLOADED" label="PLG_VM_FILE_SHOW_UPLOADED_LABEL">
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
+				<field name="allowdelete" type="list" default="0" description="PLG_VM_FILE_ALLOW_DELETE" label="PLG_VM_FILE_ALLOW_DELETE_LABEL">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+<!--
+				<field name="managetext" type="text" default="To manage files, go to user management area." description="PLG_VM_FILE_MANAGE_TEXT" label="PLG_VM_FILE_MANAGE_TEXT_LABEL" />
+-->
+			</fieldset>
+		</fields>
+	</config>
+</extension>
